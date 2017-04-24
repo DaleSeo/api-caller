@@ -37,17 +37,21 @@
       console.log(method, url, body)
       callApi(method, url, body)
         .then(res => {
-          console.log(res)
+          console.log('res:', res)
           $('#res').text(JSON.stringify(res, null, 2))
+        })
+        .catch(err => {
+          console.error('err:', err)
+          $('#res').text(JSON.stringify(err, null, 2))
         })
     }
 
     function callApi(method, url, body) {
       console.log('#callApi')
       return $.ajax({
-        method: method,
-        url: url,
-        data: body,
+        method: 'POST',
+        url: '/apis/call',
+        data: {method, url, body},
         datatype: 'json'
       })
     }

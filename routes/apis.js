@@ -9,7 +9,13 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/call', function(req, res, next) {
-  callApi(req.body).then(result => res.send(result))
+  console.log(req.body)
+  callApi(req.body)
+    .then(result => res.send(result))
+    .catch(err => {
+      console.log('err:', err)
+      res.status(500).send({msg: err.message})
+    })
 })
 
 module.exports = router;

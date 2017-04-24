@@ -1,9 +1,11 @@
 const superagent = require('superagent')
 
 function callApi (req) {
+  console.log('>>> imcoming request:', req)
   return superagent(req.method, req.url)
     .send(req.body)
     .then(res => {
+      console.log('<<< outgoing response:', res)
       return {
         statusCode: res.statusCode,
         statusText: res.statusText,
@@ -11,9 +13,6 @@ function callApi (req) {
         body: res.body,
         text: res.text
       }
-    })
-    .catch(err => {
-      console.error(err)
     })
 }
 
