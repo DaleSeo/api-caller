@@ -8,7 +8,7 @@ function callApi (req) {
       return {
         statusCode: res.res.statusCode,
         statusMessage: res.res.statusMessage,
-        headers: res.header,
+        headers: res.headers,
         body: res.body,
         text: res.text
       }
