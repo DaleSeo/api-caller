@@ -48,10 +48,13 @@
 
     function callApi(method, url, body) {
       console.log('#callApi')
+      let req = {method, url, body}
+      console.log('req:', req)
       return $.ajax({
         method: 'POST',
         url: '/apis/call',
-        data: {method, url, body},
+        data: JSON.stringify(req),
+        contentType: 'application/json',
         datatype: 'json'
       })
     }
