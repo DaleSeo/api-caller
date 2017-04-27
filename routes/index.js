@@ -12,9 +12,9 @@ router.post('/', function(req, res, next) {
   console.log(req.body)
   callApi(req.body)
     .then(result => res.send(result))
-    .catch(err => {
-      console.log('err:', err)
-      res.status(500).send({msg: err.message})
+    .catch(error => {
+      console.log('error:', error)
+      res.status(500).send({error: error})
     })
 })
 

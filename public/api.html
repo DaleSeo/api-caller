@@ -40,9 +40,9 @@
           console.log('res:', res)
           $('#res').text(JSON.stringify(res, null, 2))
         })
-        .catch(err => {
+        .catch((err, err2) => {
           console.error('err:', err)
-          $('#res').text(JSON.stringify(err, null, 2))
+          $('#res').text(JSON.stringify(err.responseJSON, null, 2))
         })
     }
 

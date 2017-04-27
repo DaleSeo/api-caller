@@ -4,6 +4,7 @@ function callApi (req) {
   console.log('>>> imcoming request:', req)
   return superagent(req.method, req.url)
     .send(req.body)
+    .ok(res => res.status)
     .then(res => {
       console.log('<<< outgoing response:', res)
       return {
