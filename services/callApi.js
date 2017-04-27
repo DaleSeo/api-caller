@@ -6,14 +6,17 @@ function callApi (req) {
     .send(req.body)
     .ok(res => res.status)
     .then(res => {
-      console.log('<<< outgoing response:', res)
       return {
-        statusCode: res.statusCode,
-        statusText: res.statusText,
-        headers: res.header,
+        statusCode: res.res.statusCode,
+        statusMessage: res.res.statusMessage,
+        headers: res.headers,
         body: res.body,
         text: res.text
       }
+    })
+    .then(res => {
+      console.log('<<< outgoing response:', res)
+      return res
     })
 }
 
