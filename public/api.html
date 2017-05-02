@@ -48,7 +48,7 @@
           $('#res_headers').text(JSON.stringify(res.headers, null, 2))
           $('#res_body').text(JSON.stringify(res.body, null, 2))
         })
-        .catch(err => {
+        .catch((err, err2) => {
           console.error('err:', err)
           $('#error').text(JSON.stringify(err, null, 2))
         })
