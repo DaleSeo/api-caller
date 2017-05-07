@@ -24,7 +24,13 @@
       <input class="btn btn-primary" type="submit"/>
     </form>
     <hr/>
-    <pre id="res">
+    <pre id="res_status">
+    </pre>
+    <pre id="res_headers">
+    </pre>
+    <pre id="res_body">
+    </pre>
+    <pre id="error">
     </pre>
   </div>
   <script>
@@ -38,11 +44,13 @@
       callApi(method, url, body)
         .then(res => {
           console.log('res:', res)
-          $('#res').text(JSON.stringify(res, null, 2))
+          $('#res_status').text(res.statusCode + res.statusMessage)
+          $('#res_headers').text(JSON.stringify(res.headers, null, 2))
+          $('#res_body').text(JSON.stringify(res.body, null, 2))
         })
         .catch((err, err2) => {
           console.error('err:', err)
-          $('#res').text(JSON.stringify(err.responseJSON, null, 2))
+          $('#error').text(JSON.stringify(err, null, 2))
         })
     }
 
