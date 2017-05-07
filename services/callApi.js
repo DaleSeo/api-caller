@@ -3,6 +3,8 @@ const superagent = require('superagent')
 function callApi (req) {
   console.log('>>> imcoming request:', req)
   return superagent(req.method, req.url)
+    .query(req.queries)
+    .set(req.headers)
     .send(req.body)
     .ok(res => res.status)
     .then(res => {
